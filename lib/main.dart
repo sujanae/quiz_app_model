@@ -7,16 +7,21 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -42,14 +47,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
         backgroundColor: Colors.purple,
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.purple,
               ),
@@ -62,16 +67,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.refresh),
-              title: Text('Refresh Quizzes'),
+              leading: const Icon(Icons.refresh),
+              title: const Text('Refresh Quizzes'),
               onTap: () {
                 refreshQuizzes();
                 Navigator.of(context).pop(); // Close the drawer
               },
             ),
             ListTile(
-              leading: Icon(Icons.score),
-              title: Text('View Quiz Marks'),
+              leading: const Icon(Icons.score),
+              title: const Text('View Quiz Marks'),
               onTap: () {
                 Navigator.push(
                   context,
@@ -87,7 +92,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         mainAxisSpacing: 16.0,
         crossAxisSpacing: 16.0,
         children: quizData.keys.map((subject) {
@@ -116,7 +121,7 @@ class _HomePageState extends State<HomePage> {
         child: Center(
           child: Text(
             subject,
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: const TextStyle(color: Colors.white, fontSize: 18),
           ),
         ),
       ),
@@ -127,17 +132,17 @@ class _HomePageState extends State<HomePage> {
 class QuizResultsPage extends StatelessWidget {
   final Map<String, int> quizScores;
 
-  QuizResultsPage({required this.quizScores});
+  const QuizResultsPage({super.key, required this.quizScores});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Marks'),
+        title: const Text('Quiz Marks'),
         backgroundColor: Colors.purple,
       ),
       body: ListView.builder(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         itemCount: quizScores.keys.length,
         itemBuilder: (context, index) {
           String subject = quizScores.keys.elementAt(index);

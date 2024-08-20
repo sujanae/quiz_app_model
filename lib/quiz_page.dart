@@ -5,9 +5,11 @@ class QuizPage extends StatefulWidget {
   final String subject;
   final Function(String, int) onQuizComplete;
 
-  QuizPage({required this.subject, required this.onQuizComplete});
+  const QuizPage(
+      {super.key, required this.subject, required this.onQuizComplete});
 
   @override
+  // ignore: library_private_types_in_public_api
   _QuizPageState createState() => _QuizPageState();
 }
 
@@ -41,15 +43,15 @@ class _QuizPageState extends State<QuizPage> {
         title: Text(widget.subject),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               quizData[widget.subject]![currentQuestionIndex].questionText,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ...quizData[widget.subject]![currentQuestionIndex]
                 .options
                 .asMap()
